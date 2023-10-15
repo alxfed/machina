@@ -1,7 +1,8 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-print("Hi, I'm Machina")
+if __name__=="__main__":
+    print("Hi, I'm Machina")
 
 """or
 chmod +x machina.py
