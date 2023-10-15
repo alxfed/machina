@@ -85,7 +85,7 @@ def draw_menu(stdscr):
         # Refresh the screen
         stdscr.refresh()
 
-        # Wait for next input
+        # Wait for input
         k = stdscr.getch()
 
 
