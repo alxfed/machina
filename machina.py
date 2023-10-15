@@ -1,6 +1,8 @@
 #!/usr/bin/python
 # -*- coding: utf-8
 import curses
+stdscr = curses.initscr()
+
 from curses import wrapper
 
 
@@ -16,11 +18,8 @@ def main(stdscr):
     stdscr.refresh()
     stdscr.getkey()
 
-
-if __name__ == "__main__":
-    stdscr = curses.initscr()
-    wrapper(main(stdscr))
-    curses.endwin()
+wrapper(main)
+curses.endwin()
 
 
 """or
