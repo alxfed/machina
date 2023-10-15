@@ -19,7 +19,7 @@ def main(stdscr):
     stdscr.getkey()
 
 wrapper(main)
-curses.endwin()
+# curses.endwin()
 
 
 """or
