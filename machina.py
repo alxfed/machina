@@ -1,24 +1,38 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-0
-import urwid
+#!/usr/bin/env python
+# encoding: utf-8
 
-if __name__=="__main__":
-    def exit_on_q(key):
-        if key in ('q', 'Q'):
-            raise urwid.ExitMainLoop()
+import npyscreen
 
-    palette = [
-        ('banner', 'black', 'light gray'),
-        ('streak', 'black', 'red'),
-        ('bg', 'black', 'blue'), ]
 
-    txt = urwid.Text(('banner', u" Hello World "), align='center')
-    map1 = urwid.AttrMap(txt, 'streak')
-    fill = urwid.Filler(map1)
-    map2 = urwid.AttrMap(fill, 'bg')
-    loop = urwid.MainLoop(map2, palette, unhandled_input=exit_on_q)
-    loop.run()
-    print("Hi, I'm Machina Ratiocinatrix.")
+class TestApp(npyscreen.NPSApp):
+    def main(self):
+        # These lines create the form and populate it with widgets.
+        # A fairly complex screen in only 8 or so lines of code - a line for each control.
+        F  = npyscreen.Form(name = "Welcome to Npyscreen",)
+        t  = F.add(npyscreen.TitleText, name = "Text:",)
+        fn = F.add(npyscreen.TitleFilename, name = "Filename:")
+        fn2 = F.add(npyscreen.TitleFilenameCombo, name="Filename2:")
+        dt = F.add(npyscreen.TitleDateCombo, name = "Date:")
+        s  = F.add(npyscreen.TitleSlider, out_of=12, name = "Slider")
+        ml = F.add(npyscreen.MultiLineEdit,
+               value = """try typing here!\nMutiline text, press ^R to reformat.\n""",
+               max_height=5, rely=9)
+        ms = F.add(npyscreen.TitleSelectOne, max_height=4, value = [1,], name="Pick One",
+                values = ["Option1","Option2","Option3"], scroll_exit=True)
+        ms2= F.add(npyscreen.TitleMultiSelect, max_height =-2, value = [1,], name="Pick Several",
+                values = ["Option1","Option2","Option3"], scroll_exit=True)
+
+        # This lets the user interact with the Form.
+        F.edit()
+
+        print(ms.get_selected_objects())
+
+
+if __name__ == "__main__":
+    App = TestApp()
+    App.run()
 
 """or
 chmod +x machina.py
