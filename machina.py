@@ -41,14 +41,14 @@ def draw_menu(stdscr):
             cursor_x = cursor_x - 1
 
 
-if __name__ == "__main__":
-    stdscr = curses.initscr()
+def main(stdscr):
     stdscr.clear()
     stdscr.refresh()
     height, width = stdscr.getmaxyx()
-    stdscr.addstr(10, 20, "Machina Ratiocinatrix: ")
+    stdscr.addstr(10, 20, f"Machina Ratiocinatrix: {height} x {width}")
     stdscr.refresh()
     curses.endwin()
 
 
-    # curses.wrapper(draw_menu)
+if __name__ == "__main__":
+    curses.wrapper(main)
